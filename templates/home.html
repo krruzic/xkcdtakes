@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+        <title>What a smug, sad comic series.</title>
+        <style type="text/css">
+        body{
+            font-family: 'Roboto', sans-serif;
+            margin:20px auto;
+            max-width:850px;
+            font-size:18px;
+            color:#444;
+            padding: 0 10px
+        }
+        h1,h2,h3{line-height:1.1}
+        h1,h3{
+            display: inline-block;
+            margin: 0;
+          }
+        .star-ratings-css{
+            unicode-bidi: bidi-override;
+            color: #c5c5c5;
+            width: 100px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0;
+            text-shadow: 0px 1px 0 #a2a2a2;
+            float: right;
+        }
+        .star-ratings-css-top{
+            color: #FF4136;
+            padding: 0;
+            position: absolute;
+            z-index: 1;
+            display: block;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+        .star-ratings-css-bottom{
+            padding: 0;
+            display: block;
+            z-index: 0;
+        }
+        img{
+            margin-top: 10px;
+            max-width:100%;
+            max-height:100%;
+            object-fit: contain;
+        }
+        button{
+            float: right;
+        }
+        </style>
+        <link rel="shortcut icon" href="http://159.203.36.230/favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+        <header>
+            <div class="title">
+                <h1>XKCD <em>DOESN'T</em> FUCKING MAKE SENSE </h1>
+                <button onclick="window.location.reload();">More</button>
+            </div>
+            <aside>AND IT'S ABSOLUTE SHIT.</aside>
+        </header>
+        <h2>Seriously, read the fuck down and see my examples.</h2>
+        <hr>
+
+        {% for row in rows %}
+        <div class="comic-head">
+            <h3>{{row["title"]}}</h3>
+            <div class="star-ratings-css">
+              <div class="star-ratings-css-top" style='width: {{row["rating"]}}%'><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+              <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            </div>
+        </div>
+        <div class="comic">
+            <img src='{{row["link"]}}'/>
+            <p>{{row["review_text"]}}</p>
+            <p style="font-size: 0.7em">&nbsp; &nbsp; &nbsp; {{row["sub_text"]}}</p>
+        </div>
+        <hr>
+        {% endfor %}
+        <a href = "/add">Submit a review</a>
+    </body>
+</html>
