@@ -46,10 +46,12 @@
             z-index: 0;
         }
         img{
-            margin-top: 10px;
             max-width:100%;
-            max-height:100%;
-            object-fit: contain;
+            height:auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 15px;
         }
         button{
             float: right;
@@ -79,7 +81,7 @@
         <div class="comic">
             <img src='{{row["link"]}}'/>
             <p>{{row["review_text"]}}</p>
-            <p style="font-size: 0.7em">&nbsp; &nbsp; &nbsp; {{row["sub_text"]}}</p>
+            <p style="font-size: 0.7em; text-indent: 50px;">{{row["sub_text"]}}</p>
         </div>
         <hr>
         {% endfor %}

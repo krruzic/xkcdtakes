@@ -36,11 +36,8 @@ def addComic():
     rating = request.form['rating']
     with sqlite3.connect(DATABASE) as conn:
         cur = conn.cursor()
-        print("test")
         cur.execute("SELECT EXISTS(SELECT 1 FROM comics WHERE comic_number=?)",[(comic_num)])
-        print("fug")
         if cur.fetchone():
-            print("exists!")
             return redirect(url_for('getComic',num=comic_num,h="COMIC ALREADY REVIEWED"))
 
     r  = requests.get("https://xkcd.com/"+comic_num+"/info.0.json")
